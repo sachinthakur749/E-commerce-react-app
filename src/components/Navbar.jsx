@@ -8,6 +8,7 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const localSignup = localStorage.getItem("signup");
+  
 
   const handleLogout = () => {
     localStorage.clear();
