@@ -12,8 +12,7 @@ function App() {
 
   return (
     <>
-      {/* <Login/> */}
-      {/* <Signup /> */}
+      
 
       <Routes>
         <Route path="/" element={<Signup />} />
