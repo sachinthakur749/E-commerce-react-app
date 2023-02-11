@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router";
+import Account from "./components/Account";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Signup from "./components/Signup";
+import Home from "./pages/Home";
 
 function App() {
+  const localSignup = localStorage.getItem("signup");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Login/> */}
+      {/* <Signup /> */}
+
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/home" element={<Home />} /> */}
+        <Route path="/carts" element={<Cart />} />
+        {/* <Route path="/account" element={<Account />} /> */}
+
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+              {/* <Account /> */}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              {/* <Home /> */}
+              <Account />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </>
   );
 }
 
