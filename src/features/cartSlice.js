@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { productsData } from "../data/ProductsData";
 
 const initialState = {
   cartItem: [],
-  cartTotalQuantity: 0,
-  cartTotalAmount: 0,
+  productsData: productsData,
 };
 
 const cartSlice = createSlice({
@@ -54,9 +54,26 @@ const cartSlice = createSlice({
         state.cartItem[itemIndex].cartQuantity += 1;
       }
     },
+
+    addToList(state, action) {
+      state.productsData.push(action.payload);
+      console.log(state.productsData);
+      console.log(action.payload.id);
+    },
+
+    removeFromList(state, action) {
+      state.productsData = state.productsData.filter((item) => item.id !== action.payload.id);
+      console.log("sachin")
+    },
   },
 });
 
-export const { addToCart, removeFromCart, decreaseQuantity, increaseQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  addToList,
+  removeFromList,
+  removeFromCart,
+  decreaseQuantity,
+  increaseQuantity,
+} = cartSlice.actions;
 export default cartSlice.reducer;

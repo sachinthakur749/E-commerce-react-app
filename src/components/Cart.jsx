@@ -13,10 +13,6 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  // const handleRemoveFromCart = (cartItem)=>{
-  //     dispatch(removeFromCart(cartItem))
-  // }
-
   return (
     <>
       <Navbar />

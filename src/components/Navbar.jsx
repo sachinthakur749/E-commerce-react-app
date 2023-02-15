@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,25 +8,19 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const localSignup = localStorage.getItem("signup");
-  
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.reload()
+    window.location.reload();
   };
 
-  const handleAccount = ()=>{
-    // {localSignup?<Navigate to={'/account'}/>:null}
-    if(!localSignup){
-     return navigate('/home')
-    }else{
-     return navigate('/account')
+  const handleAccount = () => {
+    if (!localSignup) {
+      return navigate("/home");
+    } else {
+      return navigate("/admin");
     }
-
-    // navigate('/account')
-
-  }
-
+  };
 
   return (
     <>
@@ -38,23 +32,22 @@ const Navbar = () => {
           Shop
         </p>
         <div className="flex gap-4 relative items-center ">
-          {/* <button className=" bg-[var(--primary-color)] text-white p-2  rounded-lg ">
-            Login
-          </button>
-          <button className=" bg-[var(--primary-color)] text-white p-2  rounded-lg ">
-            Signout
-          </button> */}
           {localSignup ? (
-            <button  onClick={handleLogout} className=" bg-[var(--primary-color)] text-white p-2  rounded-lg ">
+            <button
+              onClick={handleLogout}
+              className=" bg-[var(--primary-color)] text-white p-2  rounded-lg "
+            >
               logout
             </button>
           ) : null}
           {localSignup ? (
-            <button  onClick={handleAccount} className=" bg-[var(--primary-color)] text-white p-2  rounded-lg ">
-              Account
+            <button
+              onClick={handleAccount}
+              className=" bg-[var(--primary-color)] text-white p-2  rounded-lg "
+            >
+              Admin
             </button>
-          ) : null
-          }
+          ) : null}
           <AiOutlineShoppingCart
             className="cursor-pointer"
             onClick={() => navigate("/carts")}
@@ -72,3 +65,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

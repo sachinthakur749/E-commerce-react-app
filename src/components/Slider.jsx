@@ -16,7 +16,7 @@ const Slider = () => {
             <p>From $41.62/mo. for 24 mo. or $999 before trade-in</p>
           </div>
           <div className="flex gap-4 justify-center items-center">
-            <button className="text-xl bg-sky-600 p-2 px-4 rounded-[20px]">
+            <button className="text-xl bg-[var(--primary-color)] p-2 px-4 rounded-[20px]">
               Buy
             </button>
             <span>

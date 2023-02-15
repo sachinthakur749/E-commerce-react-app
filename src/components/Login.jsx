@@ -22,6 +22,11 @@ const Login = () => {
     }
   };
 
+  const handleClickHere = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <>
       <div className=" h-screen flex justify-center items-center">
@@ -59,12 +64,12 @@ const Login = () => {
           </button>
           <p>
             Don't have Account ?{" "}
-            <Link
+            <span
               className="font-bold cursor-pointer text-[var(--primary-color)]"
-              to={"/"}
+              onClick={handleClickHere}
             >
               Click here
-            </Link>{" "}
+            </span>{" "}
           </p>
         </div>
       </div>
